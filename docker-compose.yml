@@ -9,15 +9,10 @@ services:
        - "METADATA_SOURCE=http://jagger.singaren.net.sg/rr3/metadata/federation/sgaf-local/metadata.xml"
        - "TZ=${TZ}"
      volumes:
-       - ./config.php:/opt/wayf/etc/config.php
-       - ./singaren-logo.png:/opt/wayf/www/images/singaren-logo.png
-       - ./sgaf-ds-banner.png:/opt/wayf/www/images/sgaf-ds-banner.png
-       - ./custom-languages.php:/opt/wayf/lib/custom-languages.php
+       - ./sgaf-wayf/config.php:/opt/wayf/etc/config.php
+       - ./sgaf-wayf/singaren-logo.png:/opt/wayf/www/images/singaren-logo.png
+       - ./sgaf-wayf/sgaf-ds-banner.png:/opt/wayf/www/images/sgaf-ds-banner.png
+       - ./sgaf-wayf/custom-languages.php:/opt/wayf/lib/custom-languages.php
      ports:
        - 8083:80/tcp
      restart: always
-
-networks:
-  default:
-    external:
-      name: jagger_default
