@@ -1,0 +1,23 @@
+version: "2.2"
+
+services:
+
+  wayf:
+     image: spgreen/switch-wayf:2.0
+     container_name: wayf
+     environment:
+       - "METADATA_SOURCE=http://jagger.singaren.net.sg/rr3/metadata/federation/sgaf-local/metadata.xml"
+       - "TZ=${TZ}"
+     volumes:
+       - ./config.php:/opt/wayf/etc/config.php
+       - ./singaren-logo.png:/opt/wayf/www/images/singaren-logo.png
+       - ./sgaf-ds-banner.png:/opt/wayf/www/images/sgaf-ds-banner.png
+       - ./custom-languages.php:/opt/wayf/lib/custom-languages.php
+     ports:
+       - 8083:80/tcp
+     restart: always
+
+networks:
+  default:
+    external:
+      name: jagger_default
